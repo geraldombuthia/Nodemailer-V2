@@ -3,7 +3,7 @@ const router = express.Router();
 const { validationResult } = require('express-validator');
 const validateEmailForm = require('../Controllers/validators/validateEmailForm');
 const sendMail = require("../Controllers/sendMail");
-
+const errorsforShow = [];
 router.route("/").get((req, res) => {
     // A view with a form containing inputs for the recipient(s) emails
     // sender email or empty for the default email
@@ -19,11 +19,19 @@ router.route("/").get((req, res) => {
     }
     const { message, emailSubject, recipientEmail, apiKey, senderEmail } = req.body;
     try {
-        await sendMail(recipientEmail, senderEmail, emailSubject, message, apiKey)
+        const sendSuc = await sendMail(recipientEmail, senderEmail, emailSubject, message, apiKey);
+        console.log(sendSuc);
+        req.flash('EmailSend', sendSuc);
+        res.render('formInput.ejs', {messages: req.flash('EmailSend')})
+        //Setup a pop up for a successful transfer.
+
     } catch (error){
         console.error(error);
-        
+        req.flash('EmailErr', error);
+        res.render('formInput.ejs', {messages: req.flash('EmailErr')});
+        // Repopulate the form on rerender with the input values
     }
     console.log(req.body);
+
 })
 module.exports = router;

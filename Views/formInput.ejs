@@ -152,8 +152,17 @@
 
     <section class="form-section">
         <div class="container">
+            <h2>Compose Email</h2>
             <div class="form-container">
-                <h2>Compose Email</h2>
+                <% if (typeof messages !== 'undefined' && messages.length > 0) { %>
+                    <div class="flash-messages">
+                      <% messages.forEach(function(message) { %>
+                        <div class="flash-message">
+                          <%= message %>
+                        </div>
+                      <% }); %>
+                    </div>
+                  <% } %>
                 <form action="/send" method="POST">
                     <div class="form-group">
                         <label for="sender-email">Sender's Email:</label>

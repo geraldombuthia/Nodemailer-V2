@@ -7,6 +7,13 @@ const sendRouter = require("./routes/send")
 const { body, validationResult } = require('express-validator');
 
 app.set('view engine', 'ejs');
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(flash());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/send', sendRouter);
