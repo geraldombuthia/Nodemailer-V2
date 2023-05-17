@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sender</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-yDUXOUWwbHH4ggxueDnC5vJv4tmfySpVdIcN1LksGZi8W8EVZv4uKGrQc0pVf66zS7LDhFJM7Zdeow1sw1/8Jw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Reset some default styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Apply basic styles to the container */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Style the navbar */
+        .navbar {
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .menu a {
+            color: #fff;
+            margin-left: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #eaeaea;
+        }
+
+        /* Style the hero section */
+        .hero {
+            background-color: #f5f5f5;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #555;
+        }
+
+        /* Style the features section */
+        .features {
+            padding: 80px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .container > h2 {
+            text-align: center;
+        }
+        .feature {
+            width: 500px;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-content {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: #ff9900;
+            margin-right: 20px;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.4;
+        }
+
+
+        /* Style the how-to-use section */
+        .how-to-use {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .step {
+            width: 300px;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50%;
+            background-color: #333;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .step-description {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+
+        /* Style the contact section */
+        .contact {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .contact-description {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .contact-info {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Style the footer */
+        .footer {
+            background-color: #333;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo">Email Sender</h1>
+            <nav class="menu">
+                <a href="/#features">Features</a>
+                <a href="/#how-to-use">How to Use</a>
+                <a href="/send">Send Email</a>
+                <a href="/#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Powerful Email Sender Tool</h1>
+            <p class="hero-description">Effortlessly send personalized emails to your contacts</p>
+            <a href="#signup" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <div class="feature">
+                <div class="feature-content">
+                    <i class="fas fa-envelope feature-icon"></i>
+                    <div class="feature-text">
+                        <h3 class="feature-title">Personalized Emails</h3>
+                        <p class="feature-description">Craft customized emails to engage your recipients</p>
+                    </div>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-content">
+                    <i class="fa-solid fa-truck feature-icon"></i>
+                    <div class="feature-text">
+                        <h3 class="feature-title">Efficient Delivery</h3>
+                        <p class="feature-description">Ensure reliable and timely delivery of your messages</p>
+                    </div>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-content">
+                    <!-- <img src="user-icon.png" alt="User Icon" class="feature-icon"> -->
+                    <i class="fa-solid fa-user-group feature-icon"></i>
+                    <div class="feature-text">
+                        <h3 class="feature-title">User-friendly Interface</h3>
+                        <p class="feature-description">Intuitive and easy-to-use interface for seamless email management
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-to-use" class="how-to-use">
+        <div class="container">
+            <h2 class="section-title">How to Use</h2>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <p class="step-description">Sign up for an account and log in.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <p class="step-description">Create or import your contact list.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <p class="step-description">Compose your personalized email.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <p class="step-description">Select recipients from your contact list.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">5</span>
+                    <p class="step-description">Click "Send" to deliver your message.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="contact-description">If you have any questions or need assistance, feel free to reach out to us.
+            </p>
+            <div class="contact-info">
+                <p>Email: info@email.com</p>
+                <p>Phone: 123-456-7890</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Email Sender. All rights reserved
+            </p>
+        </div>
+    </footer>

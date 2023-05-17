@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sender - Compose Email</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-yDUXOUWwbHH4ggxueDnC5vJv4tmfySpVdIcN1LksGZi8W8EVZv4uKGrQc0pVf66zS7LDhFJM7Zdeow1sw1/8Jw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Reset some default styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Apply basic styles to the container */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Style the navbar */
+        .navbar {
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .menu a {
+            color: #fff;
+            margin-left: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #eaeaea;
+        }
+
+        /* Style the form section */
+        .form-section {
+            background-color: #f5f5f5;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-align: left;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .disclaimer {
+            font-size: 14px;
+            color: #555;
+            margin: 20px 0;
+        }
+
+        .form-group input[type="email"],
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        .form-button {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 12px 24px;
+            border: 1px solid grey;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-button:hover {
+            background-color: #555;
+        }
+
+        /* Style the footer */
+        .footer {
+            background-color: #333;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo">Email Sender</h1>
+            <nav class="menu">
+                <a href="#features">Features</a>
+                <a href="/#how-to-use">How to Use</a>
+                <a href="/send">Send Email</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <h2>Compose Email</h2>
+                <form action="/send" method="POST">
+                    <div class="form-group">
+                        <label for="sender-email">Sender's Email:</label>
+                        <input type="email" id="sender-email" name="senderEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="api-key">Gmail API Key:</label>
+                        <input type="text" id="api-key" name="apiKey" >
+                        <small class="disclaimer">Note: To use Gmail as the sender, you need to generate an API key on
+                            the Google Console. Otherwise you can leave it empty and a default email will be used.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-email">Recipient Email(s):</label>
+                        <input type="email" id="recipientEmail" name="recipientEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-subject">Subject:</label>
+                        <input type="text" id="emailSubject" name="emailSubject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-body">Message Body:</label>
+                        <textarea id="message-body" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="form-button">Send Email</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Email Sender. All rights reserved</p>
+        </div>
+    </footer>
+</body>
+
+</html>
