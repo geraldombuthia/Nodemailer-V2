@@ -4,11 +4,10 @@
 // to send out information
 
 const nodemailer = require('nodemailer');
-
+const markdownParser = require("./markdownParser")
 async function sendMail(receiverEmail, senderEmail, msgSubject, message, apiKey) {
-    let user;
-    let pass;
-
+    let user, pass;
+    let parsed = await markdownParser(message);
     if (senderEmail && apiKey) {
         user = senderEmail;
         pass = apiKey;
@@ -30,9 +29,10 @@ async function sendMail(receiverEmail, senderEmail, msgSubject, message, apiKey)
         from: senderEmail || process.env.SENDER_EMAIL,
         to: receiverEmail,
         subject: msgSubject,
-        text: message
+        // text: message,
+        html: await markdownParser(message),
     };
-
+    console.log(message)
     return new Promise((resolve, reject) => {
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
